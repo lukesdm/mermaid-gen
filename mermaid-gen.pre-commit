@@ -13,7 +13,7 @@ exec 1>&2
 
 # Get changed/added .mmd files (exclude deleted)
 # Note - simplifying by not using -z, won't handle weird chars like newlines in filenames.
-mmdFiles=$(git diff --cached --name-only --diff-filter=dx $against | grep .mmd)
+mmdFiles=$(git diff --cached --name-only --diff-filter=dx $against | grep -i ".mmd$")
 IFS=$'\n'
 for file in $mmdFiles
 do 
