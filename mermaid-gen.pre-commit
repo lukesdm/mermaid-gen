@@ -4,10 +4,10 @@ echo Hello
 
 if git rev-parse --verify HEAD >/dev/null 2>&1
 then
-	against=HEAD
+    against=HEAD
 else
-	# Initial commit: diff against an empty tree object
-	against=$(git hash-object -t tree /dev/null)
+    # Initial commit: diff against an empty tree object
+    against=$(git hash-object -t tree /dev/null)
 fi
 
 # echo Hello
@@ -16,6 +16,23 @@ fi
 # exec 1>&2
 
 # Get changed/added files (exclude deleted) - will need to further filter to exclude directories and other weird stuff.
-# (NUL-delmited)
-mmdFiles=$(git diff --cached --name-only --diff-filter=dx $against) | grep -z .mmd
+# Note - simplifying by not using -z, won't handle weird chars like newlines in filenames.
+mmdFiles=$(git diff --cached --name-only --diff-filter=dx $against | grep .mmd)
+# Avoid 'for' splitting when there's a space in filename.
+IFS=$'\n'
+for file in $mmdFiles
+do 
+    if test -f "$file"; then
+         outFile="${file%.*}.png"
+        # echo Hello
+        mmdc -i "$file" -o "$outFile"
+    else
+        cat <<\EOF
+Error: Couldn't access input file, or encountered an unexpected input
+EOF
+	exit 1
+    fi
+done 
+
+# Add + stage generated file
 
