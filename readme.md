@@ -1,4 +1,4 @@
-Automated mermaid diagram generation for Github Wikis, using git hooks.
+Automated mermaid diagram generation for GitHub documentation, using git hooks.
 
 Identifies .mmd files added/changed and generates corresponding images for them, which can be referenced from documentation files.
 
