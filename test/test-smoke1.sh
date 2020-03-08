@@ -1,7 +1,4 @@
-# Assume running in a testBase folder, with relevant files copied (most of the repo contents).
-
-# Derive test name and folder from script name, e.g.
-# ./test/test-basic-add1.sh --> test-basic-add1.sh --> test-basic-add1
+# Just tests required dependencies are present and that whitespace handling works OK
 scriptPath=$0
 scriptFilename=${scriptPath##*/}
 testName=${scriptFilename%.*}
@@ -31,6 +28,3 @@ cp "test/system1.mmd" "$testDir/"
 # 4. Stage file
 pushd "$testDir"
 git add "system1.mmd"
-
-# 5. Commit
-git commit -m "Test - added diagram"
