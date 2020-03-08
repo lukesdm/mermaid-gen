@@ -22,9 +22,9 @@ Some specific issues:
 - Local only - won't see updates on server-side merges (see Next Steps)
 
 ## Tests
-A start has been made on some automated end-to-end testing . Call `./run-tests {TestBase}` from the repo root, where `{TestBase}` is a non-existent folder outside of source control.
+A start has been made on some automated end-to-end testing. Call `./run-tests {TestBase}` from the repo root, where `{TestBase}` is a non-existent folder outside of source control.
 
 ## Next Steps
 As pre-commit scripts are run locally, it depends on each team member having this set up. The next step would be to look into creating a GitHub Action to automatically update the diagrams server-side.
 
-Copyright Luke McQuade 2020
+Copyright (c) Luke McQuade 2020
