@@ -24,7 +24,7 @@ Adjust parameters in `./mermaid-gen.params` - the first line specifies the outpu
 
 See [doc.md](./test/doc.md) for a basic demonstration of a typical use case.
 
-## Known issues/limitations
+## Known Issues/Limitations
 This project is currently at the experimental stage. Suggestions on improvements are welcome, especially relating to the bash scripting, which I'm not that familiar with.
 Some specific issues:
 - Partial commits are not supported - the diagram will be rendered based on its entire file contents.
