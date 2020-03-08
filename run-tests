@@ -1,0 +1,41 @@
+#!/bin/sh
+# Copies files into the specified test base folder, then runs tests. 
+# Tests are scripts with the naming convention "test-*.sh"
+
+if [ ! -d "test" ] ; then
+    echo "ERROR: No test directory found; This should be run from the repository's root folder." 1>&2
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    echo "ERROR: No test base folder specified" 1>&2
+    exit 1
+fi
+
+testBase=$1
+
+if [ -d "$testBase" ]; then
+    echo "ERROR: Test base already exists, please choose another." 1>&2
+    exit 1
+fi
+
+if [ -f "$testBase" ]; then
+    echo "ERROR: A file was specified, when expecting a non-existent directory." 1>&2
+    exit 1
+fi
+
+# Prepare test base - copy files required for testing.
+# (currently, everything in the repo apart from the .git folder)
+cp -R ./ "$testBase"
+rm -rf "$testBase/.git"
+
+if [ -d "$testBase/.git" ]; then
+    echo "ERROR: .git folder wasn't successfully removed during test setup. Aborting.  " 1>&2
+    exit 1
+fi
+
+# Run the tests.
+cd "$testBase"
+for testScript in ./test/test-*.sh; do
+    exec "$testScript"
+done
