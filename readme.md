@@ -19,7 +19,7 @@ Adjust parameters in `./mermaid-gen.params` - the first line specifies the outpu
 This project is currently at the experimental stage. Suggestions on improvements are welcome, especially relating to the bash scripting.
 Some specific issues:
 - Partial commits are not supported - the diagram will be rendered based on its entire file contents
-- Local only (see Next Steps)
+- Local only - won't see updates on server-side merges (see Next Steps)
 
 ## Tests
 A start has been made on some automated end-to-end testing . Call `./run-tests {TestBase}` from the repo root, where `{TestBase}` is a non-existent folder outside of source control.
