@@ -8,8 +8,7 @@ else
     against=$(git hash-object -t tree /dev/null)
 fi
 
-# Redirect output to stderr.
-exec 1>&2
+# TODO: Check if args file has changed - if so, [re-]render all .mmd files.
 
 # Get changed/added .mmd files (exclude deleted)
 # Note - simplifying by not using -z, won't handle weird chars like newlines in filenames.
@@ -18,18 +17,10 @@ IFS=$'\n'
 for file in $mmdFiles
 do 
     if test -f "$file"; then
-        outFile="${file%.*}.png"
-        
-        # Get additional mmdc args, from the last line of file
-        while IFS= read -r line; do mmdArgs=$line; done < mermaid-gen.args
-        
         # Render diagram and stage
-        echo "-i \"$file\" -o \"$outFile\" $mmdArgs" | xargs mmdc
-        git add "$outFile"
+        ./mermaid-gen.sh "$file"
     else
-        cat <<\EOF
-Error: Couldn't access input file, or encountered an unexpected input
-EOF
-	exit 1
+        echo "ERROR: Couldn't access input file, or encountered an unexpected input" 1>&2
+	    exit 1
     fi
 done

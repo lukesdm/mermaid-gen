@@ -1,0 +1,3 @@
+# First line specifies output file type (png, svg or pdf), second line additional arguments to the mmdc command. Don't add or remove lines in this file!
+png
+-w 1024 -H 768
