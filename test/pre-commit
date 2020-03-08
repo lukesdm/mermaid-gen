@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ./mermaid-gen_pre-commit.sh
