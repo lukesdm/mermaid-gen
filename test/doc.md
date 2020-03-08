@@ -1,3 +1,4 @@
 # System 1
 An overview:  
-![source: system1.mmd](./system1.png)
+![System overview](./system1.png)  
+Source: [system1.mmd](./system1.mmd)

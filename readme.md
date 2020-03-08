@@ -15,13 +15,16 @@ exec ./mermaid-gen_pre-commit.sh
 
 Adjust parameters in `./mermaid-gen.params` - the first line specifies the output type (`png`, `svg` or `pdf`), the second line specifies additional parameters of `mmdc`, according to https://github.com/mermaid-js/mermaid.cli#options. Take care not to change the line numbers.
 
+A basic demonstration of end usage is in [doc.md](./test/doc.md).
+
 ## Known issues/limitations
 This project is currently at the experimental stage. Suggestions on improvements are welcome, especially relating to the bash scripting, which I'm not that familiar with.
 Some specific issues:
-- Partial commits are not supported - the diagram will be rendered based on its entire file contents
-- Local only - won't see updates on server-side merges (see Next Steps)
+- Partial commits are not supported - the diagram will be rendered based on its entire file contents.
+- Local only - won't see updates on server-side merges (see Next Steps).
 - Storing generated artifacts alongside the diagram source isn't ideal.
-- Error handling - still need to work out the best approach for this - a syntax error can cause a hang during the pre-commit hook.
+- Error handling - still need to work out the best approach for this. A syntax error can cause a hang during the pre-commit hook.
+- Configuration is fragile (the mermaid-gen.parms file format).
 
 ## Tests
 A start has been made on some automated end-to-end testing. Call `./run-tests {TestBase}` from the repo root, where `{TestBase}` is a non-existent folder outside of source control.
