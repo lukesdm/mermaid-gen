@@ -4,14 +4,21 @@ Automated [mermaid](https://mermaid-js.github.io/mermaid/#/) diagram generation 
 Identifies .mmd files added/changed and generates corresponding images for them, which can be referenced from documentation files.
 
 ## Usage
-1. **Dependencies** - Make sure the `git` and [`mmdc`](https://github.com/mermaid-js/mermaid.cli#mermaidcli) commands are accessible by your git client. Note: despite the warning, global install worked for me (Windows 10). This was developed using `mmdc` version 8.4.8 and `git` 2.23.0.windows.1.
+1. **Dependencies** - Make sure the `git` and [`mmdc`](https://github.com/mermaid-js/mermaid.cli#mermaidcli) commands are accessible by your git client. Note: despite the warning, global install worked for me (Windows 10).  `mmdc` version 8.4.8 and `git` version 2.23.0.windows.1 have been using during development.
 
-2. Copy these to your repository root:
-./mermaid-gen_pre-commit.sh
-./mermaid-gen.params
+2. Copy the following to your repository root:
+```
+mermaid-gen_pre-commit.sh
+mermaid-gen.sh
+mermaid-gen.params
+```
 
-3. Add this to your .git/hooks/pre-commit script file (or create a new one with these contents):
+3. Add this to your .git/hooks/pre-commit script file (or create a new one* with these contents):  
+```
 exec ./mermaid-gen_pre-commit.sh
+```
+
+*You may also need to add an opening `#!/bin/sh`  
 
 Adjust parameters in `./mermaid-gen.params` - the first line specifies the output type (`png`, `svg` or `pdf`), the second line specifies additional parameters of `mmdc`, according to https://github.com/mermaid-js/mermaid.cli#options. Take care not to change the line numbers.
 
