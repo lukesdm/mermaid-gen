@@ -34,3 +34,6 @@ git add "system1.mmd"
 
 # 5. Commit
 git commit -m "Test - added diagram"
+
+# If there were no errors, the test passed. 
+# TODO: More robust assertion

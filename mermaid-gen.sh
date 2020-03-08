@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Generates rendered diagrams
 # Input: .mmd file to render. If not specified, renders all .mmd files, inc. subfolders
 # Run it from the repository root

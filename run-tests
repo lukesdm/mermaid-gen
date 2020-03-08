@@ -1,6 +1,6 @@
 #!/bin/sh
 # Copies files into the specified test base folder, then runs tests. 
-# Tests are scripts with the naming convention "test-*.sh"
+# Tests are discovered according to the naming convention "test-*.sh"
 
 if [ ! -d "test" ] ; then
     echo "ERROR: No test directory found; This should be run from the repository's root folder." 1>&2
@@ -23,6 +23,8 @@ if [ -f "$testBase" ]; then
     echo "ERROR: A file was specified, when expecting a non-existent directory." 1>&2
     exit 1
 fi
+
+# TODO: Guard against running in existing git repo
 
 # Prepare test base - copy files required for testing.
 # (for simplicity, everything in the repo apart from the .git folder)
