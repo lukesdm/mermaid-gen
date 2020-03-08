@@ -24,7 +24,7 @@ Some specific issues:
 - Local only - won't see updates on server-side merges (see Next Steps).
 - Storing generated artifacts alongside the diagram source isn't ideal.
 - Error handling - still need to work out the best approach for this. A syntax error can cause a hang during the pre-commit hook.
-- Configuration is fragile (the mermaid-gen.parms file format).
+- Configuration is fragile (the mermaid-gen.params file format). Also, when changed, diagrams will have to be manually re-rendered. Running `./mermaid-gen.sh` without parameters will [re-]render all .mmd files.
 
 ## Tests
 A start has been made on some automated end-to-end testing. Call `./run-tests {TestBase}` from the repo root, where `{TestBase}` is a non-existent folder outside of source control.
