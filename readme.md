@@ -22,7 +22,7 @@ exec ./mermaid-gen_pre-commit.sh
 
 Adjust parameters in `./mermaid-gen.params` - the first line specifies the output type (`png`, `svg` or `pdf`), the second line specifies additional parameters of `mmdc`, according to https://github.com/mermaid-js/mermaid.cli#options. Take care not to change the line numbers.
 
-A basic demonstration of end usage is in [doc.md](./test/doc.md).
+See [doc.md](./test/doc.md) for a basic demonstration of a typical use case.
 
 ## Known issues/limitations
 This project is currently at the experimental stage. Suggestions on improvements are welcome, especially relating to the bash scripting, which I'm not that familiar with.
